@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Loan Department">
+<suite name="Loan Department" parallel="tests" thread-count="2">
+
+<listeners>
+
+ <listener class-name="test.Listeners"/>
+ 
+</listeners>
+
     <!--  Suite Level Parameterisation -->
    <parameter name="URL" value="qaclickacademy.com"/>
    
  
 
 	<!-- Test Module -->
-	 <test thread-count="5" name="Personal Loan">
-	  <!-- Test Level Parameterisation  -->
-	  
+	  <test thread-count="5" name="Personal Loan">
+	  <!-- Test Level Parameterisation  --> 
 	 <parameter name="URL1" value="deepankaracademy.com"/>
 	  <parameter name="APIKey/username" value="123456"/>
 	  
@@ -18,13 +24,13 @@
 			<class name="test.day1" />
 			<class name="test.day2" />
 		</classes>
-	</test>
+	</test> 
 
  <test name="Car Loan">
 	<classes>
 		<class name="test.day3">
 			<methods>
-                <exclude name="Mobile.*"/>
+                <include name="Mobile.*"/>
 			</methods>
 		</class>
 	</classes>
